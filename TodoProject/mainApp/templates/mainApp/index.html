@@ -1,0 +1,66 @@
+{% extends "../base.html" %}
+
+{% block body %}
+<form method="post" action="/">
+	{% csrf_token %}
+	<input type="text" name="title" required>
+	<button type="submit">Add</button>
+</form>
+
+<div class="container">
+	<div class="todo">
+	<h3>Todo</h3>
+	{% for task_todo in tasks_todo %}
+	<div class="todo-content">
+		<a href="{% url 'delete' task_todo.id%}">&#128465;&#65039;</a>
+		<p>{{task_todo.title}}</p>
+		<span>
+			<form method="post" action="{% url 'update' task_todo.id%}">
+				{% csrf_token %}
+				<button type="submit" name="status" value="ongoing">&#8677;</button>
+			</form>
+		</span>
+	</div>
+	{% endfor %}
+	</div>
+	
+	<div class="ongoing">
+	<h3>Ongoing</h3>
+	{% for task_ongoing in tasks_ongoing %}
+	<div class="ongoing-content">
+		<span class="ongoing-content-back">
+			<form method="post" action="{% url 'update' task_ongoing.id%}">
+				{% csrf_token %}
+				<button type="submit" name="status" value="todo">&#8676;</button>
+			</form>
+		</span>
+
+		<a href="{% url 'delete' task_ongoing.id%}">&#128465;&#65039;</a>
+		<p class="ongoing-content-title">{{task_ongoing.title}}</p>
+		<span class="ongoing-content-forward">
+			<form method="post" action="{% url 'update' task_ongoing.id%}">
+				{% csrf_token %}
+				<button type="submit" name="status" value="finished">&#8677;</button>
+			</form>
+		</span>
+	</div>
+	{% endfor %}
+	</div>
+
+	<div class="finished">
+	<h3>Finished</h3>
+	{% for task_finished in tasks_finished %}
+	<div class="finished-content">
+		<span>
+			<form method="post" action="{% url 'update' task_finished.id%}">
+				{% csrf_token %}
+				<button type="submit" name="status" value="ongoing"> &#8676;</button>
+			</form>
+			<a href="{% url 'delete' task_finished.id%}">&#128465;&#65039;</a>
+		</span>
+		<p>{{task_finished.title}}</p>
+	</div>
+	{% endfor %}
+	</div>
+</div>
+{% endblock body %}

@@ -1,0 +1,26 @@
+.container {
+	display: flex;
+	justify-content: space-evenly;
+	border: solid black 1px;
+	text-align: center;
+
+}
+
+.todo-content, .finished-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ongoing-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.todo, .ongoing, .finished {
+	border: solid black 1px;
+	width: 30%;
+}
+
+.ongoing
