@@ -28,21 +28,23 @@
 	<h3>Ongoing</h3>
 	{% for task_ongoing in tasks_ongoing %}
 	<div class="ongoing-content">
-		<span class="ongoing-content-back">
-			<form method="post" action="{% url 'update' task_ongoing.id%}">
-				{% csrf_token %}
-				<button type="submit" name="status" value="todo">&#8676;</button>
-			</form>
-		</span>
 
-		<a href="{% url 'delete' task_ongoing.id%}">&#128465;&#65039;</a>
 		<p class="ongoing-content-title">{{task_ongoing.title}}</p>
-		<span class="ongoing-content-forward">
-			<form method="post" action="{% url 'update' task_ongoing.id%}">
-				{% csrf_token %}
-				<button type="submit" name="status" value="finished">&#8677;</button>
-			</form>
-		</span>
+		<div>
+			<span class="ongoing-content-back">
+				<form method="post" action="{% url 'update' task_ongoing.id%}">
+					{% csrf_token %}
+					<button type="submit" name="status" value="todo">&#8676;</button>
+				</form>
+			</span>
+			<a href="{% url 'delete' task_ongoing.id%}">&#128465;&#65039;</a>
+			<span class="ongoing-content-forward">
+				<form method="post" action="{% url 'update' task_ongoing.id%}">
+					{% csrf_token %}
+					<button type="submit" name="status" value="finished">&#8677;</button>
+				</form>
+			</span>
+		</div>
 	</div>
 	{% endfor %}
 	</div>

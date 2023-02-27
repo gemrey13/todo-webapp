@@ -1,9 +1,13 @@
+body {
+
+	background: linear-gradient(to right, rgb(58, 16, 120), violet);
+}
+
 .container {
 	display: flex;
 	justify-content: space-evenly;
-	border: solid black 1px;
 	text-align: center;
-
+	max-height: 100vw;
 }
 
 .todo-content, .finished-content {
@@ -12,15 +16,18 @@
 	align-items: center;
 }
 
-.ongoing-content {
+.ongoing-content div{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.todo, .ongoing, .finished {
-	border: solid black 1px;
-	width: 30%;
+.ongoing-content {
+	margin: 1em 0 0;
+	color: white;
+	background-color: rgb(47, 88, 205, 0.4);
 }
 
-.ongoing
+.todo, .ongoing, .finished {
+	width: 30%;
+}

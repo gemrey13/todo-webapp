@@ -1,3 +1,5 @@
+
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
@@ -13,7 +15,6 @@ def index(request):
 		title = request.POST['title']
 		todo = Task.objects.create(title=title)
 		return redirect('index')
-
 	return render(request, 'mainApp/index.html', {
 		'tasks_todo': tasks_todo,
 		'tasks_ongoing': tasks_ongoing,
@@ -32,8 +33,8 @@ def update(request, pk):
     	elif status == 'todo':
     		task.status = 'todo'
     	task.save()
-    	return redirect('index')
 
+    	return redirect('index')
 
 def delete(request, pk):
 	task = get_object_or_404(Task, pk=pk)
